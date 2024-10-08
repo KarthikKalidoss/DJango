@@ -1,0 +1,58 @@
+{% extends 'shop/layouts/main.html' %}
+<!-- Title Block Start-->
+{% block title %}
+Shopkart | Online Shopping
+{% endblock title %}
+<!-- Title Block End -->
+{% block content %}
+<section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="section-title">
+                        <h4>{{category_name}}</h4>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8">
+                    <ul class="filter__controls">
+                        <li class="active" data-filter="*">All</li>
+                        <li data-filter=".women">Women’s</li>
+                        <li data-filter=".men">Men’s</li>
+                        <li data-filter=".kid">Kid’s</li>
+                        <li data-filter=".accessories">Accessories</li>
+                        <li data-filter=".cosmetic">Cosmetics</li>
+                    </ul>
+                </div>
+            </div>
+
+                <div class="row property__gallery">
+                    {% for item in products %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix women">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="{{item.product_image}}">
+                                {% if item.trending %}
+                                    <div class="label new">Fast Selling</div>
+                                {% endif %}
+                                <ul class="product__hover">
+                                    <li><a href="{{item.product_image}}" class="image-popup"><span
+                                            class="arrow_expand"></span></a></li>
+                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6><a href="{% url 'product_details' category_name item.name %}">{{item.name}}</a></h6>
+                                <div class="product__price">
+                                    <span class="float-start old_price"> £. {{item.original_price}} </span>
+                                    <span class="float-end new_price"> £. {{item.selling_price}} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+        </div>
+</section>
+{% include 'shop/inc/footer.html' %}
+{% endblock content %}

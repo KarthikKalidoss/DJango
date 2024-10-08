@@ -1,0 +1,88 @@
+{% extends 'shop/layouts/main.html' %}
+
+<!-- Title Block Start-->
+{% block title %}
+Shopkart | Register
+{% endblock title %}
+
+{% block content %}
+<section class="checkout spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6 class="coupon__link">Register Here.</h6>
+                </div>
+            </div>
+            <form method="post" action="" class="checkout__form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5>Enter The Details Below</h5>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>User Name <span>*</span></p>
+                                    {{form.username}}
+                                    {% if form.errors.username %}
+                                    <label class="text-danger">{{ form.errors.username }}</label>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>email <span>*</span></p>
+                                    {{form.email}}
+                                    {% if form.errors.email %}
+                                    <label class="text-danger">{{ form.errors.email }}</label>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>Password <span>*</span></p>
+                                    {{form.password1}}
+                                    {% if form.errors.password1 %}
+                                    <label class="text-danger">{{ form.errors.password1 }}</label>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>Confirm Password <span>*</span></p>
+                                    {{form.password2}}
+                                    {% if form.errors.password2 %}
+                                    <label class="text-danger">{{ form.errors.password2 }}</label>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Centering the Register Button -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 text-center">
+                                <button type="submit" class="site-btn">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8 text-center">
+                    <div class="checkout__order">
+                        <h5>Already An User?</h5>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4 text-center">
+                                <button type="submit" class="site-btn" onclick="window.location.href='{% url 'login' %}';">Login Here</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- Checkout Section End -->
+
+
+{% endblock content %}
